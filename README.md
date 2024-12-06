@@ -89,11 +89,11 @@ The code defines the following APIs:
 1. Start MongoDB:
     - Ensure that your MongoDB server is running.
 
-2. Open PyCharm:
-    - Open PyCharm IDE on your computer.
+2. Open VS Code:
+    - Open VS Code IDE on your computer.
 
 3. Open Project:
-    - Open the Cloud Service Access Management System project in PyCharm.
+    - Open the Cloud Service Access Management System project in VS Code.
 
 4. Run the FastAPI Application:
     - Run the FastAPI application by executing the main.py script.
