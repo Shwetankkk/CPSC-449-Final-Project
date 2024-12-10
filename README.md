@@ -1,8 +1,5 @@
 ## Cloud Service Access Management System
-### with MongoDB, Postman, and VS Code: Dynamic access control, subscription management, and usage tracking for cloud APIs.
-
-Team Members : Shwetank Singh (CWID:813968286) & Mahitha Pasupuleti (CWID:867114134)
-[Stream Project Working Video](https://drive.google.com/file/d/1PxyPnPNhcn75oFr7ePQ9ROM-n2eueks1/view?usp=sharing)
+### with MongoDB, Postman, and PyCharm: Dynamic access control, subscription management, and usage tracking for cloud APIs.
 
 ## Steps to run the application:
 1. Create environment and activate.
@@ -89,11 +86,11 @@ The code defines the following APIs:
 1. Start MongoDB:
     - Ensure that your MongoDB server is running.
 
-2. Open VS Code:
-    - Open VS Code IDE on your computer.
+2. Open PyCharm:
+    - Open PyCharm IDE on your computer.
 
 3. Open Project:
-    - Open the Cloud Service Access Management System project in VS Code.
+    - Open the Cloud Service Access Management System project in PyCharm.
 
 4. Run the FastAPI Application:
     - Run the FastAPI application by executing the main.py script.
