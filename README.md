@@ -90,7 +90,7 @@ The code defines the following APIs:
 1. Start MongoDB:
     - Ensure that your MongoDB server is running.
 
-2. Open PyCharm:
+2. Open VS Code:
     - Open PyCharm IDE on your computer.
 
 3. Open Project:
