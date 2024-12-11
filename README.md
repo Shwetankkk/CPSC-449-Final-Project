@@ -1,5 +1,5 @@
 ## Cloud Service Access Management System
-### with MongoDB, Postman, and PyCharm: Dynamic access control, subscription management, and usage tracking for cloud APIs.
+### with MongoDB, Postman, and VS Code: Dynamic access control, subscription management, and usage tracking for cloud APIs.
 
 Team Members :  Shwetank Singh (CWID:813968286) & Mahitha Pasupuleti (CWID:867114134)
 
@@ -87,30 +87,36 @@ The code defines the following APIs:
 
 ## Testing API:
 
-1. Start MongoDB:
+### Initial Setup:
+1. **Start MongoDB:**
     - Ensure that your MongoDB server is running.
 
-2. Open VS Code:
-    - Open PyCharm IDE on your computer.
+2. **Open VS Code:**
+    - Open the VS Code IDE on your computer.
 
-3. Open Project:
+3. **Open Project:**
     - Open the Cloud Service Access Management System project in PyCharm.
 
-4. Run the FastAPI Application:
-    - Run the FastAPI application by executing the main.py script.
+4. **Run the FastAPI Application:**
+    - Run the FastAPI application by executing the `main.py` script.
     - Verify that the application is running without errors.
 
-5. Insert Default Sample Data:
+5. **Insert Default Sample Data:**
     - Check if the default sample data is inserted successfully by looking for the "Default sample data inserted successfully" message in the console.
 
-6. Open Postman:
-    - Open the Postman application on your computer.
+### Testing with Postman:
 
-7. **Create Plan:**
-    - Use Postman to create a new plan by sending a POST request to `http://127.0.0.1:8001/plans` with a JSON body containing plan details.
+#### Plan Management:
+1. **Create Plan:**
+    - **Endpoint:** `POST /plans`
     - **Example JSON Body:**
     ```json
-    { "plan_name": "Silver Plan", "description": "Moderate access", "api_permissions": ["api1", "api3"], "usage_limits": {"api1": 200, "api3": 100} }
+    { 
+      "plan_name": "Silver Plan", 
+      "description": "Moderate access", 
+      "api_permissions": ["api1", "api3"], 
+      "usage_limits": {"api1": 200, "api3": 100} 
+    }
     ```
     - **Expected Response:**
     ```json
@@ -120,92 +126,143 @@ The code defines the following APIs:
     }
     ```
 
-8. **Get All Plans:**
-    - Retrieve all plans using Postman by sending a GET request to `http://127.0.0.1:8001/plans`.
-    - Verify that the newly created plan is listed.
-
-9. **Modify Plan:**
-    - Modify the plan using Postman by sending a PUT request to `http://127.0.0.1:8001/plans/{plan_id}` with the updated plan details.
-    - **Example URL:**
-    ```
-    http://127.0.0.1:8001/plans/{plan_id}
-    ```
+2. **Create Pro Plan:**
+    - **Endpoint:** `POST /plans`
     - **Example JSON Body:**
     ```json
     {
-        "plan_name": "Silver Plan",
-        "description": "Moderate access",
-        "api_permissions": ["api1", "api3", "api5"],
-        "usage_limits": {"api1": 200, "api3": 100, "api5": 50}
-    }
-    ```
-    - **Expected Response:**
-    ```json
-    {
-        "message": "Plan modified successfully"
-    }
-    ```
-
-10. **Delete Plan:**
-    - Delete the plan using Postman by sending a DELETE request to `http://127.0.0.1:8001/plans/{plan_id}`.
-    - **Example URL:**
-    ```
-    http://127.0.0.1:8001/plans/{plan_id}
-    ```
-    - **Expected Response:**
-    ```json
-    {
-        "message": "Plan deleted successfully"
+      "plan_name": "Pro Plan",
+      "description": "Access to all APIs with extended limits",
+      "api_permissions": ["api1", "api2", "api3"],
+      "usage_limits": {
+        "api1": 500,
+        "api2": 300,
+        "api3": 100
+      }
     }
     ```
 
-11. **Subscribe to Plan:**
-    - Subscribe a user to a plan using Postman by sending a POST request to `http://127.0.0.1:8001/subscriptions` with a JSON body containing subscription details.
+3. **Get All Plans:**
+    - **Endpoint:** `GET /plans`
+    - No body required.
+
+4. **Modify Plan:**
+    - **Endpoint:** `PUT /plans/{plan_id}`
     - **Example JSON Body:**
     ```json
-    { "user_id": "user456", "plan_id": "{plan_id}", "subscribed_at": "2023-01-01T12:00:00", "api_permissions": ["api1", "api3"] }
-    ```
-    - **Expected Response:**
-    ```json
     {
-        "message": "Subscribed successfully",
-        "subscription_id": "Generated Subscription ID"
+      "plan_name": "Pro Plan Updated",
+      "description": "Updated description for Pro Plan",
+      "api_permissions": ["api1", "api2", "api3", "api4"],
+      "usage_limits": {
+        "api1": 600,
+        "api2": 400,
+        "api3": 150,
+        "api4": 50
+      }
     }
     ```
 
-12. **Check Access Permission:**
-    - Check access permission using Postman by sending a GET request to `http://127.0.0.1:8001/access/{user_id}/{api_request}`.
-    - **Example URL:**
-    ```
-    http://127.0.0.1:8001/access/user456/api1
-    ```
-    - **Expected Response:**
-    ```json
-    {
-        "message": "Access granted"
-    }
-    ```
+5. **Delete Plan:**
+    - **Endpoint:** `DELETE /plans/{plan_id}`
+    - No body required. Replace `{plan_id}` with the appropriate ID.
 
-13. **Track API Request:**
-    - Track an API request using Postman by sending a POST request to `http://127.0.0.1:8001/usage/user456` with a JSON body containing usage details.
+#### Permission Management:
+1. **Add Permission:**
+    - **Endpoint:** `POST /permissions`
     - **Example JSON Body:**
     ```json
-    { "user_id": "user456", "api_request": "/api1", "timestamp": "2023-01-01T12:15:00" }
-    ```
-    - **Expected Response:**
-    ```json
     {
-        "message": "API request tracked successfully"
+      "permission_name": "api4",
+      "api_endpoint": "/api4",
+      "description": "Access to advanced analytics"
     }
     ```
 
-14. **Check Limit Status:**
-    - Check the limit status using Postman by sending a GET request to `http://127.0.0.1:8001/usage/user456/limit`.
-    - **Expected Response:**
+2. **Modify Permission:**
+    - **Endpoint:** `PUT /permissions/{permission_id}`
+    - **Example JSON Body:**
     ```json
     {
-        "message": "Within limit"
+      "permission_name": "api4-updated",
+      "api_endpoint": "/api4-updated",
+      "description": "Updated description for api4"
     }
     ```
 
-This script outlines the steps to demonstrate the key features of the Cloud Service Access Management System using PyCharm, MongoDB, and Postman.
+3. **Delete Permission:**
+    - **Endpoint:** `DELETE /permissions/{permission_id}`
+    - No body required. Replace `{permission_id}` with the appropriate ID.
+
+4. **Get All Permissions:**
+    - **Endpoint:** `GET /permissions`
+    - No body required.
+
+#### Subscription Management:
+1. **Subscribe to Plan:**
+    - **Endpoint:** `POST /subscriptions`
+    - **Example JSON Body:**
+    ```json
+    {
+      "user_id": "user456",
+      "plan_id": "your_plan_id_here", 
+      "subscribed_at": "2024-12-06T10:00:00",
+      "api_permissions": ["api1", "api3"]
+    }
+    ```
+
+2. **Assign/Modify User Plan:**
+    - **Endpoint:** `PUT /subscriptions/{user_id}`
+    - **Example JSON Body:**
+    ```json
+    {
+      "user_id": "user456",
+      "plan_id": "your_updated_plan_id_here", 
+      "subscribed_at": "2024-12-06T12:00:00",
+      "api_permissions": ["api1", "api2", "api4"]
+    }
+    ```
+
+3. **Get Subscription Details:**
+    - **Endpoint:** `GET /subscriptions/{user_id}`
+    - No body required. Replace `{user_id}` with `user456`.
+
+4. **Delete Subscription:**
+    - **Endpoint:** `DELETE /subscriptions/{user_id}`
+    - No body required. Replace `{user_id}` with `user456`.
+
+#### API Usage and Access:
+1. **Check Access Permission:**
+    - **Endpoint:** `GET /access/{user_id}/{api_request}`
+    - Replace `{user_id}` with `user456` and `{api_request}` with `/api3`.
+
+2. **Track API Request:**
+    - **Endpoint:** `POST /usage/{user_id}`
+    - **Example JSON Body:**
+    ```json
+    {
+      "user_id": "user456",
+      "api_request": "/api3",
+      "timestamp": "2024-12-06T11:00:00"
+    }
+    ```
+
+3. **Check Limit Status:**
+    - **Endpoint:** `GET /usage/{user_id}/limit`
+    - No body required. Replace `{user_id}` with `user456`.
+
+4. **Reset API Usage:**
+    - **Endpoint:** `PUT /usage/reset/{user_id}`
+    - No body required. Replace `{user_id}` with `user456`.
+
+#### Admin Functionality:
+1. **Get System Statistics:**
+    - **Endpoint:** `GET /admin/statistics`
+    - No body required.
+
+2. **Reset All API Usage:**
+    - **Endpoint:** `PUT /admin/usage/reset`
+    - No body required.
+
+This document outlines the steps to demonstrate the key features of the Cloud Service Access Management System using VS Code, MongoDB, and Postman.
+
