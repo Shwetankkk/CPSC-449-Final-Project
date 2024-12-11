@@ -255,14 +255,6 @@ The code defines the following APIs:
     - **Endpoint:** `PUT /usage/reset/{user_id}`
     - No body required. Replace `{user_id}` with `user456`.
 
-#### Admin Functionality:
-1. **Get System Statistics:**
-    - **Endpoint:** `GET /admin/statistics`
-    - No body required.
-
-2. **Reset All API Usage:**
-    - **Endpoint:** `PUT /admin/usage/reset`
-    - No body required.
 
 This document outlines the steps to demonstrate the key features of the Cloud Service Access Management System using VS Code, MongoDB, and Postman.
 
