@@ -1,7 +1,7 @@
 ## Cloud Service Access Management System
 ### with MongoDB, Postman, and VS Code: Dynamic access control, subscription management, and usage tracking for cloud APIs.
 
-Team Members :  Shwetank Singh (CWID:813968286) & Mahitha Pasupuleti (CWID:867114134)
+Team Members :  Shwetank Singh (CWID:813968286) | Mahitha Pasupuleti (CWID:867114134) | Manjari Bhavanasi (CWID:872441514)
 
 [Stream Project Working Video](https://drive.google.com/file/d/1PxyPnPNhcn75oFr7ePQ9ROM-n2eueks1/view?usp=sharing) 
 
